@@ -1,0 +1,9 @@
+sudo: require
+services:
+    - docker
+
+before_install:
+    - docker build -t portrin/docker-react -f Dockerfile.dev .
+
+scripts:
+    - docker run -e CI=true portrin/docker-react yarn test
